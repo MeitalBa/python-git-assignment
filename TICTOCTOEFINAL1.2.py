@@ -91,7 +91,7 @@ def load_game():
     try:
         with open(SAVE_FILE, "rb") as f:
             return pickle.load(f)
-    except:
+    except (OSError, pickle.UnpicklingError):
         return None
 
 def append_history(p1, p2, winner):
@@ -316,4 +316,6 @@ def main():
     turtle.bye()
 
 if __name__ == "__main__":
+
     main()
+
